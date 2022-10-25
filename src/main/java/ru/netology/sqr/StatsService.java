@@ -24,7 +24,7 @@ public class StatsService {
             if (sale <= sales[minMonth]) {
                 minMonth = month;
             }
-            month += 1;
+            month = month + 1;
         }
         return minMonth + 1;
     }
@@ -37,7 +37,7 @@ public class StatsService {
             if (sale >= sales[maxMonth]) {
                 maxMonth = month;
             }
-            month += 1;
+            month = month + 1;
         }
         return maxMonth + 1;
     }
@@ -47,7 +47,7 @@ public class StatsService {
         int month = 0;
         for (long sale : sales) {
             if (sale < calcSalesAvg(sales)) {
-                month += 1;
+                month = month + 1;
             }
         }
         return month;
@@ -58,7 +58,7 @@ public class StatsService {
         int month = 0;
         for (long sale : sales) {
             if (sale > calcSalesAvg(sales)) {
-                month += 1;
+                month = month + 1;
             }
         }
         return month;
