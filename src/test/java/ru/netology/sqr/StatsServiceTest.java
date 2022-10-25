@@ -1,63 +1,61 @@
 package ru.netology.sqr;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 
-class StatsServiceTest {
+public class StatsServiceTest {
 
     @Test
-    void shouldcalcSum() {
+    void shouldCalculateSumSales() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 180;
-
-        int actual = service.calcSum(sales);
-
-        Assertions.assertEquals(expected, actual);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 180;
+        long actual = service.calculateSumSales(sales);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void calcAverageSum() {
+    void shouldCalcSalesAvg() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 15;
-        double actual = service.calcAverageSum(sales);
-        Assertions.assertEquals(expected, actual);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 15;
+        long actual = service.calcSalesAvg(sales);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void shouldFindMax() {
+    void shouldCalcMinSales() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 8;
-        int actual = service.calcFindMax(sales);
-        Assertions.assertEquals(expected, actual);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 9;
+        long actual = service.calcMinSales(sales);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void shouldFindMin() {
+    void shouldCalcMaxSales() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 9;
-        int actual = service.calcFindMin(sales);
-        Assertions.assertEquals(expected, actual);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 8;
+        long actual = service.calcMaxSales(sales);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void calcUnAverage() {
+    void shouldCalcBelowAvgSales() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
-        double actual = service.calcUnAverage(sales);
-        Assertions.assertEquals(expected, actual);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 5;
+        long actual = service.calcBelowAvgSales(sales);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void calcUpAverage() {
+    void shouldCalcAboveAvgSales() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
-        double actual = service.calcUpAverage(sales);
-        Assertions.assertEquals(expected, actual);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 5;
+        long actual = service.calcAboveAvgSales(sales);
+        assertEquals(expected, actual);
     }
 }

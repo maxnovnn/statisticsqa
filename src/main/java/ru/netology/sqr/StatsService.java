@@ -2,61 +2,65 @@ package ru.netology.sqr;
 
 public class StatsService {
 
-    public int calcSum(int[] sales) {
-        int sum = 0;
-        for (int sale : sales) {
-            sum += sale;
+    // Сумма всех продаж
+    public long calculateSumSales(long[] sales) {
+        long sumSales = 0;
+        for (long sale : sales) {
+            sumSales += sale;
         }
-        return sum;
+        return sumSales;
     }
 
-    public double calcAverageSum(int[] sales) {
-        return calcSum(sales) / sales.length;
-
+    // Средняя сумма за месяц
+    public long calcSalesAvg(long[] sales) {
+        return calculateSumSales(sales) / sales.length;
     }
 
-    public int calcFindMax(int[] sales) {
-        int findMax = 0;
-        for (int i = 1; i < sales.length; i++) {
-            if (sales[findMax] <= sales[i]) {
-                findMax = i;
+    // Месяц с минимальной продажей
+    public long calcMinSales(long[] sales) {
+        int minMonth = 0;
+        int month = 0;
+        for (long sale : sales) {
+            if (sale <= sales[minMonth]) {
+                minMonth = month;
+            }
+            month += 1;
+        }
+        return minMonth + 1;
+    }
+
+    // Месяц с максимальной продажей
+    public long calcMaxSales(long[] sales) {
+        int maxMonth = 0;
+        int month = 0;
+        for (long sale : sales) {
+            if (sale >= sales[maxMonth]) {
+                maxMonth = month;
+            }
+            month += 1;
+        }
+        return maxMonth + 1;
+    }
+
+    // кол-во месяцев ниже среднего
+    public long calcBelowAvgSales(long[] sales) {
+        int month = 0;
+        for (long sale : sales) {
+            if (sale < calcSalesAvg(sales)) {
+                month += 1;
             }
         }
-        findMax +=1;
-        return findMax;
+        return month;
     }
 
-    public int calcFindMin(int[] sales) {
-        int findMin = 0;
-        for (int i = 1; i < sales.length; i++) {
-            if (sales[findMin] >= sales[i]) {
-                findMin = i;
+    // кол-во месяцев выше среднего
+    public long calcAboveAvgSales(long[] sales) {
+        int month = 0;
+        for (long sale : sales) {
+            if (sale > calcSalesAvg(sales)) {
+                month += 1;
             }
         }
-        findMin += 1;
-        return findMin;
+        return month;
     }
-
-    public int calcUnAverage(int[] sales) {
-        int count = 0;
-        double averageSum = calcAverageSum(sales);
-        for (int sale : sales) {
-            if (sale < averageSum) {
-                count = count + 1;
-            }
-        }
-        return count;
-    }
-
-    public int calcUpAverage(int[] sales) {
-        int count = 0;
-        double averageSum = calcAverageSum(sales);
-        for (int sale : sales) {
-            if (sale > averageSum) {
-                count = count + 1;
-            }
-        }
-        return count;
-    }
-
 }
